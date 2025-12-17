@@ -1,4 +1,5 @@
 #pragma once
+#include <atomic>
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -34,7 +35,7 @@ public:
     int x{0}, y{0};
     std::vector<std::shared_ptr<IFightObserver>> observers;
     
-    bool alive = true;
+    std::atomic<bool> alive{true};
 
     NPC(NpcType t, const std::string& n, int x, int y);
     NPC(NpcType t, std::istream& is);
